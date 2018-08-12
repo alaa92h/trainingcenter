@@ -8,6 +8,7 @@ class Admin extends CI_Controller {
         parent::__construct();  
         $this->load->database();
         $this->load->library('session'); 
+//        new data has been add
     } 
 
 
