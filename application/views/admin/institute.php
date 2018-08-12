@@ -1,0 +1,1 @@
+<h1><?php echo $institute->name; ?></h1>

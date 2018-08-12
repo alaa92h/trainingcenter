@@ -1,0 +1,1 @@
+<h1>welcome to index php</h1>
