@@ -17,7 +17,7 @@ class Admin extends CI_Controller {
 
 		$data["sidebar"] = "admin/sidebar.php";
 		$data["page"] = "admin/index.php";
-		$data["title"] = "لوحه تحكم الادمن";
+		$data["title"] = "لوحه تحكم الادمن تعديل";
 		$this->load->view('template', $data);
 	}
 
