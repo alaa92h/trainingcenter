@@ -8,6 +8,13 @@ class Institute extends CI_Controller {
         parent::__construct();
         $this->load->database();
         $this->load->library('session');
+        if (!$this->aauth->is_loggedin()) {
+            redirect('login');
+        }
+
+        if ($this->aauth->get_user()->level == "admin") {
+            redirect('admin');
+        }
     }
 
     public function index() {
@@ -37,10 +44,11 @@ class Institute extends CI_Controller {
     }
 
     public function teachers() {
-
+        $institute_id = $this->aauth->get_user()->institute_id;
+        $data["teachers"] = $this->db->get_where("teachers", ["institute_id" => $institute_id])->result();
         $data["sidebar"] = "institute/sidebar.php";
         $data["page"] = "institute/teachers.php";
-        $data["title"] = "اضافة استاذ";
+        $data["title"] = " استاذ";
         $this->load->view('template', $data);
     }
 
@@ -50,6 +58,19 @@ class Institute extends CI_Controller {
         $data["page"] = "institute/add_teacher.php";
         $data["title"] = "اضافة استاذ";
         $this->load->view('template', $data);
+    }
+
+    public function post_add_teacher() {
+        $name = $_POST["name"];
+        $about = $_POST["about"];
+        $img = "img"; //$_POST["img"];
+        $phone = $_POST["phone"];
+        $email = $_POST["email"];
+        $institute_id = $this->aauth->get_user()->institute_id;
+
+
+        $this->db->insert("teachers", ['name' => $name, 'about' => $about, ' phone' => $phone, ' email' => $email, ' img' => $img, 'institute_id' => $institute_id]);
+        redirect('institute/teachers');
     }
 
 }
