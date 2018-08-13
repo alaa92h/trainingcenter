@@ -10,6 +10,14 @@
                 <span class="menu-text">الرئيسيه </span>
             </a>
         </li>
+					
+        <!--Dashboard-->
+        <li>
+            <a href="<?php echo base_url() ?>admin">
+                <i class="menu-icon glyphicon glyphicon-home"></i>
+                <span class="menu-text">الرئيسيه </span>
+            </a>
+        </li>
         <!--Widgets-->
         <li>
             <a href="<?php echo base_url() ?>admin/institutes">
